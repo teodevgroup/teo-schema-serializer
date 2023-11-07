@@ -54,3 +54,19 @@ pub unsafe extern "C" fn free_serialize_project_in_directory_output(result: *mut
         let _ = CString::from_raw(result);
     }
 }
+
+mod test {
+    use std::ffi::{CString, c_char};
+    use super::serialize_project_in_directory;
+
+    #[test]
+    fn serialize() {
+        let project_dir = "/Users/victor/Developer/hello-teo";
+        let c_str = CString::new(project_dir).unwrap();
+        let c_project_dir: *const c_char = c_str.as_ptr() as *const c_char;
+        let mut error_code = 0;
+        let result = unsafe { serialize_project_in_directory(c_project_dir, &mut error_code) };
+        let c_string = unsafe { CString::from_raw(result) };
+        println!("see result {:?}", c_string);
+    }
+}
