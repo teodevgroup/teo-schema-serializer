@@ -17,5 +17,5 @@ fn main() {
 
     cbindgen::generate_with_config(&crate_dir, config)
         .expect("Unable to generate bindings")
-        .write_to_file(PathBuf::from_str(&format!("target/{profile}")).unwrap().join("teo_schema_serializer.h"));
+        .write_to_file(PathBuf::from_str(&format!("target/{profile}")).unwrap().join("libteo_schema_serializer.h"));
 }

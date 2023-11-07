@@ -40,7 +40,8 @@ pub unsafe extern "C" fn serialize_project_in_directory(dir: *const c_char, erro
             *error_code = 0;
             c_string.into_raw()
         },
-        Err(_) => {
+        Err(err) => {
+            println!("{err}");
             *error_code = 4;
             return null_mut();
         }
