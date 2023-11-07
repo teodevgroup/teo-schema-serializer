@@ -55,6 +55,7 @@ pub unsafe extern "C" fn free_serialize_project_in_directory_output(result: *mut
     }
 }
 
+#[cfg(test)]
 mod test {
     use std::ffi::{CString, c_char};
     use super::serialize_project_in_directory;
